@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:uedemo/examples/core_widgets.dart';
 import 'package:uedemo/examples/nav_items.dart';
 import 'package:uedemo/examples/list.dart';
 
@@ -16,7 +17,7 @@ class MyApp extends StatelessWidget {
       //
       //
       // Cambia el parámetro [example] para ver otro ejemplo
-      home: Examples(example: Example.drawer),
+      home: Examples(example: Example.scaffold),
       //
       //
       //
@@ -40,6 +41,14 @@ final examples = {
   Example.stateful: (_) => StatefulExample(),
   Example.tabBar: (_) => TabBarExample(),
   Example.navBar: (_) => NavigationBarExample(),
+  Example.texts: (_) => TextsSample(),
+  Example.containers1: (_) => ContainersSample1(),
+  Example.containers2: (_) => ContainersSample2(),
+  Example.padding: (_) => PaddingSample(),
+  Example.otherBoxes: (_) => OtherBoxesSample(),
+  Example.buttons1: (_) => ButtonSample1(),
+  Example.buttons2: (_) => ButtonSample2(),
+  Example.scaffold: (_) => ScaffoldSample(),
 };
 
 enum Example {
@@ -52,5 +61,13 @@ enum Example {
   tabBar,
   pageView,
   stateful,
-  navBar
+  navBar,
+  texts,
+  containers1,
+  containers2,
+  padding,
+  otherBoxes,
+  buttons1,
+  buttons2,
+  scaffold
 }
