@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:uedemo/examples/core_widgets.dart';
+import 'package:uedemo/examples/layouts.dart';
 import 'package:uedemo/examples/nav_items.dart';
 import 'package:uedemo/examples/list.dart';
+import 'package:uedemo/examples/navigation/screen1.dart';
 
 import 'examples/stateful.dart';
 import 'utils.dart';
@@ -17,7 +19,7 @@ class MyApp extends StatelessWidget {
       //
       //
       // Cambia el parámetro [example] para ver otro ejemplo
-      home: Examples(example: Example.scaffold),
+      home: Examples(example: Example.navigation),
       //
       //
       //
@@ -49,6 +51,12 @@ final examples = {
   Example.buttons1: (_) => ButtonSample1(),
   Example.buttons2: (_) => ButtonSample2(),
   Example.scaffold: (_) => ScaffoldSample(),
+  Example.row: (_) => RowSample(),
+  Example.columnLayout: (_) => ColumnSample(),
+  Example.expanded: (_) => ExpandedSample(),
+  Example.flexible: (_) => FlexibleSample(),
+  Example.expandedFlexible: (_) => ExpandedFlexibleSample(),
+  Example.navigation: (_) => Screen1(),
 };
 
 enum Example {
@@ -69,5 +77,11 @@ enum Example {
   otherBoxes,
   buttons1,
   buttons2,
-  scaffold
+  scaffold,
+  row,
+  columnLayout,
+  expanded,
+  flexible,
+  expandedFlexible,
+  navigation
 }
