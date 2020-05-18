@@ -13,7 +13,6 @@ class _FutureSampleScreenState extends State<FutureSampleScreen> {
   int number = 0;
   @override
   Widget build(BuildContext context) {
-    print("Build");
     return Scaffold(
         appBar: CustomAppBar(),
         body: _getBody(),

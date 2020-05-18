@@ -1,0 +1,96 @@
+import 'dart:async';
+
+import 'package:flutter/material.dart';
+import 'package:uedemo/examples/core_widgets.dart';
+import 'package:uedemo/examples/future/giphy_api.dart';
+
+class StreamSampleScreen extends StatefulWidget {
+  StreamSampleScreen({Key key}) : super(key: key);
+
+  @override
+  _StreamSampleScreenState createState() => _StreamSampleScreenState();
+}
+
+class _StreamSampleScreenState extends State<StreamSampleScreen> {
+  int selected = INIT;
+  static const INIT = 0;
+
+  callStream() => GiphyApi.getFirstGifStream(selected);
+
+  @override
+  Widget build(BuildContext context) {
+    print("Build"); // Just called to init
+    return Scaffold(
+        appBar: CustomAppBar(),
+        body: _getBody(),
+        floatingActionButton: Row(
+          mainAxisAlignment: MainAxisAlignment.end,
+          children: <Widget>[
+            FloatingActionButton(
+              child: Icon(Icons.refresh),
+              onPressed: () {
+                selected = INIT;
+                callStream();
+              },
+            ),
+            FloatingActionButton(
+              child: Icon(Icons.add),
+              onPressed: () {
+                selected += 1;
+                callStream();
+              },
+            ),
+          ],
+        ));
+  }
+
+  _getBody() {
+    return Center(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.start,
+        children: <Widget>[
+          StreamBuilder<String>(
+            stream: GiphyApi.gifController.stream,
+            builder: (context, snapshot) {
+              if (snapshot.connectionState == ConnectionState.waiting) {
+                print("Streambuilder INIT");
+                callStream(); //Init
+                return Container(
+                  height: 200,
+                  width: 300,
+                  alignment: Alignment.center,
+                  child: CircularProgressIndicator(),
+                );
+              }
+              if (snapshot.hasData) {
+                print("Streambuilder hasData: " +
+                    snapshot.connectionState.toString());
+                return Column(
+                  children: <Widget>[
+                    Container(
+                      width: MediaQuery.of(context).size.width,
+                      height: 200,
+                      decoration: BoxDecoration(
+                        image: DecorationImage(
+                          image: NetworkImage(snapshot.data),
+                          fit: BoxFit.fitWidth,
+                        ),
+                      ),
+                    ),
+                    Text(
+                      "Mostrando imagen $selected",
+                      style: Theme.of(context).textTheme.headline5,
+                    ),
+                  ],
+                );
+              } else if (snapshot.hasError) {
+                return Text("${snapshot.error}");
+              }
+              return Container();
+            },
+          ),
+        ],
+      ),
+    );
+  }
+}

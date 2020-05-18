@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:uedemo/examples/core_widgets.dart';
 import 'package:uedemo/examples/future/future_sample_screen.dart';
+import 'package:uedemo/examples/future/stream_sample_screen.dart';
 import 'package:uedemo/examples/layouts.dart';
 import 'package:uedemo/examples/nav_items.dart';
 import 'package:uedemo/examples/list.dart';
@@ -20,7 +21,7 @@ class MyApp extends StatelessWidget {
       //
       //
       // Cambia el parámetro [example] para ver otro ejemplo
-      home: Examples(example: Example.future),
+      home: Examples(example: Example.stream),
       //
       //
       //
@@ -59,6 +60,7 @@ final examples = {
   Example.expandedFlexible: (_) => ExpandedFlexibleSample(),
   Example.navigation: (_) => Screen1(),
   Example.future: (_) => FutureSampleScreen(),
+  Example.stream: (_) => StreamSampleScreen(),
 };
 
 enum Example {
@@ -86,5 +88,6 @@ enum Example {
   flexible,
   expandedFlexible,
   navigation,
-  future
+  future,
+  stream
 }
