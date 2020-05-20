@@ -31,6 +31,9 @@ class _StreamSampleScreenState extends State<StreamSampleScreen> {
                 callStream();
               },
             ),
+            SizedBox(
+              width: 5,
+            ),
             FloatingActionButton(
               child: Icon(Icons.add),
               onPressed: () {
@@ -63,12 +66,13 @@ class _StreamSampleScreenState extends State<StreamSampleScreen> {
                 return Column(
                   children: <Widget>[
                     Container(
-                      width: MediaQuery.of(context).size.width,
+                      //width: MediaQuery.of(context).size.width,
                       height: 200,
+                      margin: EdgeInsets.only(top: 10),
                       decoration: BoxDecoration(
                         image: DecorationImage(
                           image: NetworkImage(snapshot.data),
-                          fit: BoxFit.fitWidth,
+                          fit: BoxFit.fitHeight,
                         ),
                       ),
                     ),
