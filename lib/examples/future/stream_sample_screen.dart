@@ -1,5 +1,3 @@
-import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:uedemo/examples/core_widgets.dart';
 import 'package:uedemo/examples/future/giphy_api.dart';
@@ -13,7 +11,7 @@ class StreamSampleScreen extends StatefulWidget {
 
 class _StreamSampleScreenState extends State<StreamSampleScreen> {
   int selected = INIT;
-  static const INIT = 0;
+  static const INIT = 1;
 
   callStream() => GiphyApi.getFirstGifStream(selected);
 
@@ -53,7 +51,6 @@ class _StreamSampleScreenState extends State<StreamSampleScreen> {
             stream: GiphyApi.gifController.stream,
             builder: (context, snapshot) {
               if (snapshot.connectionState == ConnectionState.waiting) {
-                print("Streambuilder INIT");
                 callStream(); //Init
                 return Container(
                   height: 200,
@@ -63,8 +60,6 @@ class _StreamSampleScreenState extends State<StreamSampleScreen> {
                 );
               }
               if (snapshot.hasData) {
-                print("Streambuilder hasData: " +
-                    snapshot.connectionState.toString());
                 return Column(
                   children: <Widget>[
                     Container(

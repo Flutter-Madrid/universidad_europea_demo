@@ -10,9 +10,11 @@ class FutureSampleScreen extends StatefulWidget {
 }
 
 class _FutureSampleScreenState extends State<FutureSampleScreen> {
-  int number = 0;
+  int number = INIT;
+  static const INIT = 1;
   @override
   Widget build(BuildContext context) {
+    print("build");
     return Scaffold(
         appBar: CustomAppBar(),
         body: _getBody(),
@@ -23,7 +25,7 @@ class _FutureSampleScreenState extends State<FutureSampleScreen> {
               child: Icon(Icons.refresh),
               onPressed: () {
                 setState(() {
-                  number = 1;
+                  number = INIT;
                 });
               },
             ),
