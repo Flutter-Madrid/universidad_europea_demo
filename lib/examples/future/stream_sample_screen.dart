@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:uedemo/examples/core_widgets.dart';
+import 'package:uedemo/examples/future/gif_box.dart';
 import 'package:uedemo/examples/future/giphy_api.dart';
 
 class StreamSampleScreen extends StatefulWidget {
@@ -65,16 +66,8 @@ class _StreamSampleScreenState extends State<StreamSampleScreen> {
               if (snapshot.hasData) {
                 return Column(
                   children: <Widget>[
-                    Container(
-                      //width: MediaQuery.of(context).size.width,
-                      height: 200,
-                      margin: EdgeInsets.only(top: 10),
-                      decoration: BoxDecoration(
-                        image: DecorationImage(
-                          image: NetworkImage(snapshot.data),
-                          fit: BoxFit.fitHeight,
-                        ),
-                      ),
+                    GifBox(
+                      url: snapshot.data,
                     ),
                     Text(
                       "Mostrando imagen $selected",

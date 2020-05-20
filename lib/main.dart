@@ -21,7 +21,7 @@ class MyApp extends StatelessWidget {
       //
       //
       // Cambia el parámetro [example] para ver otro ejemplo
-      home: Examples(example: Example.stream),
+      home: Examples(example: Example.future),
       //
       //
       //

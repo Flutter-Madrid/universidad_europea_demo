@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:uedemo/examples/core_widgets.dart';
+import 'package:uedemo/examples/future/gif_box.dart';
 import 'package:uedemo/examples/future/giphy_api.dart';
 
 class FutureSampleScreen extends StatefulWidget {
@@ -57,15 +58,8 @@ class _FutureSampleScreenState extends State<FutureSampleScreen> {
                   child: CircularProgressIndicator(),
                 );
               if (snapshot.hasData) {
-                return Container(
-                  width: MediaQuery.of(context).size.width,
-                  height: 200,
-                  decoration: BoxDecoration(
-                    image: DecorationImage(
-                      image: NetworkImage(snapshot.data),
-                      fit: BoxFit.fitWidth,
-                    ),
-                  ),
+                return GifBox(
+                  url: snapshot.data,
                 );
               } else if (snapshot.hasError) {
                 return Text("${snapshot.error}");
